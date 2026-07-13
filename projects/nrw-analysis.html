@@ -33,7 +33,20 @@
     </div>
 
     <div class="project-detail-body">
-      <p>Write the full story of this project here — the problem, your approach, and the outcome. This is the space for detail the homepage card doesn't have room for.</p>
+        <p>Non-revenue water — treated water that's produced but never billed, whether lost to leaks or to metering and billing gaps — is one of the biggest efficiency challenges a water utility faces. At MOWASSCO, tracking it meant pulling together two things that had never been correlated before: what the network was physically losing, and what the billing system was failing to capture.</p>
+
+        <h3>The problem</h3>
+        <p>Meter readings and billing data lived in the utility's ERP system, while leak and burst records lived separately in the GIS. Without a shared view, it was hard to tell whether a scheme's water loss was mostly physical (leaking pipes) or commercial (unbilled or under-billed connections) — a distinction that changes what kind of intervention actually helps.</p>
+
+        <h3>The approach</h3>
+        <p>I built a Python workflow to pull meter readings directly from the SPA ERP system via its REST API on each billing cycle, rather than relying on manual exports. That data gets cleaned, matched to customer accounts, and published as a hosted feature layer on ArcGIS Enterprise — most recently the June 2026 billing cycle.</p>
+        <p>From there, I built a dashboard in ArcGIS Dashboards that puts commercial NRW (billing-side losses) and physical NRW (leaks and bursts) side by side across MOWASSCO's schemes, so patterns that would be invisible in either dataset alone become visible together.</p>
+
+        <h3>Tools</h3>
+        <p>Python (data extraction &amp; cleaning) · REST API integration · ArcGIS Enterprise (hosted feature layers) · ArcGIS Dashboards</p>
+
+        <h3>Outcome</h3>
+        <p>The correlated view identified Likoni as the priority scheme — the one showing the clearest overlap between high commercial losses and high physical leak activity — giving management a data-backed starting point for where to focus repair and billing-audit resources first.</p>
     </div>
 
   </main>
