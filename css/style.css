@@ -62,21 +62,26 @@ section[id] {
 .nav-links a {
   font-size: 0.8rem;
   letter-spacing: 0.05em;
+  padding: 0 0.5em;
   text-transform: uppercase;
   text-decoration: none;
   color: #9DB0AC;
 }
 
 .hero {
+  position: relative;
   min-height: 100vh;
   background: #12232E;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 6rem 2rem 2rem;
+  overflow: hidden;
 }
 
 .coord-readout {
+  position: relative;
+  z-index: 1;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   color: #C97A3D;
@@ -84,6 +89,8 @@ section[id] {
 }
 
 .hero-name {
+  position: relative;
+  z-index: 1;
   font-size: clamp(3rem, 10vw, 6rem);
   line-height: 0.95;
   color: #E7ECE9;
@@ -91,6 +98,8 @@ section[id] {
 }
 
 .hero-role {
+  position: relative;
+  z-index: 1;
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 600;
   color: #1E6E62;
@@ -98,6 +107,8 @@ section[id] {
 }
 
 .hero-line {
+  position: relative;
+  z-index: 1;
   max-width: 34rem;
   font-size: 1.05rem;
   color: #9DB0AC;
@@ -178,17 +189,11 @@ section[id] {
   }
 }
 
-/* TODO: revisit contour line opacity/shape and scroll cue styling */
-.hero {
-  position: relative;
-  overflow: hidden;
-}
-
 .contour-field {
   position: absolute;
   inset: 0;
-  z-index: 0;
-  opacity: 0.5;
+  z-index: 1;
+  opacity: 0.35;
 }
 
 .contour-field svg {
@@ -284,6 +289,7 @@ section[id] {
   white-space: nowrap;
 }
 
+/* Skills Section Main Block */
 .skills {
   max-width: 1080px;
   margin: 0 auto;
@@ -291,47 +297,118 @@ section[id] {
   border-top: 1px solid #D9DED8;
 }
 
+/* Styled Eyebrow Badge */
+.skills .section-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C97A3D;
+  background: rgba(201, 122, 61, 0.08);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid rgba(201, 122, 61, 0.2);
+  margin-bottom: 1.25rem;
+}
+
+/* Section Title */
 .skills-heading {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   line-height: 1.25;
-  max-width: 30rem;
-  margin-bottom: 3rem;
+  max-width: 38rem;
+  margin-bottom: 3.5rem;
+  color: #12232E;
 }
 
+/* Grid Layout */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
+/* Technical Accent Headers */
 .skill-group-title {
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #1E6E62;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
+.skill-group-title::before {
+  content: '▪';
+  color: #C97A3D;
+  font-size: 0.9rem;
+}
+
+/* Skill List Styling */
 .skill-list {
   list-style: none;
 }
 
 .skill-list li {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #5B6B70;
-  padding: 0.4rem 0;
+  padding: 0.55rem 0.6rem;
   border-top: 1px solid #D9DED8;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
 }
 
 .skill-list li:first-child {
-  border-top: none;
+  border-top: 1px solid #D9DED8;
 }
+
+
 
 .projects {
   max-width: 1080px;
   margin: 0 auto;
   padding: 5rem 2rem;
   border-top: 1px solid #D9DED8;
+}
+
+/* Hover Interaction on List Items */
+.skill-list li:hover {
+  color: #12232E;
+  background-color: rgba(30, 110, 98, 0.06);
+  border-left-color: #1E6E62;
+  padding-left: 0.85rem;
+}
+
+/* Vertical Dividers for Desktop Views */
+@media (min-width: 801px) {
+  .skills-grid > div {
+    position: relative;
+  }
+
+  .skills-grid > div:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -1.25rem;
+    height: 100%;
+    width: 1px;
+    background: #D9DED8;
+  }
+}
+
+/* Mobile Responsive Grid */
+@media (max-width: 800px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .projects-heading {
@@ -417,17 +494,39 @@ section[id] {
   flex-wrap: wrap;
 }
 
+/* Contact Link Base Styling */
 .contact-link {
-  font-size: 0.95rem;
-  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  font-size: 0.9rem;
   color: #12232E;
-  border-bottom: 1px solid #C97A3D;
+  text-decoration: none;
   padding-bottom: 3px;
+  margin-right: 1.5rem;
   transition: color 0.2s ease;
 }
 
+/* Custom Animated Underline */
+.contact-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #C97A3D; /* Your accent amber color */
+  transform: scaleX(0.35);    /* Matches the resting 35% width */
+  transform-origin: center;   /* Animates symmetrically from center */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+/* Hover Interaction */
 .contact-link:hover {
   color: #C97A3D;
+}
+
+.contact-link:hover::after {
+  transform: scaleX(1); /* Expands to full width on hover */
 }
 
 .site-footer {
@@ -481,16 +580,34 @@ section[id] {
 
 .resume-link {
   display: inline-block;
+  position: relative;
   font-size: 0.85rem;
   color: #12232E;
   text-decoration: none;
-  border-bottom: 1px solid #C97A3D;
   padding-bottom: 3px;
   transition: color 0.2s ease;
 }
 
+/* Static pseudo-element to build the customizable underline */
+.resume-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #C97A3D; /* Your accent amber color */
+  transform: scaleX(0.35);   /* Initial collapsed width */
+  transform-origin: center;    /* Animates from center */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+}
+
 .resume-link:hover {
   color: #C97A3D;
+}
+
+.resume-link:hover::after {
+  transform: scaleX(1); /* Expands full width on hover */
 }
 
 .not-found {
@@ -570,4 +687,117 @@ section[id] {
   font-size: 0.6rem;
   letter-spacing: 0.03em;
   color: #5B6B70;
+}
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+  
+  /* Matches your page's dark background */
+  background-color: #12232E; 
+  backdrop-filter: blur(8px);
+
+  /* Initial hidden state */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Restores proper horizontal spacing */
+.site-nav .nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Links layout */
+.site-nav .nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+/* Visible state when scrolled to #about */
+.site-nav.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Updated Fact Strip Container */
+.fact-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
+/* Individual Pill Styling */
+.fact-strip .fact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  background-color: rgba(18, 35, 46, 0.05); /* Subtle tint matching your body theme */
+  border: 1px solid rgba(18, 35, 46, 0.18); /* Clean border accent */
+  border-radius: 6px; /* Smooth rounded corners */
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+  color: #12232E;
+  white-space: nowrap; /* Prevents text from breaking onto two lines */
+  transition: all 0.2s ease;
+}
+
+/* Hover Effect */
+.fact-strip .fact:hover {
+  background-color: rgba(30, 110, 98, 0.15);
+  border-color: #1E6E62;
+  transform: translateY(-1px);
+}
+
+/* Styled Teal Checkmark */
+.fact-strip .fact::before {
+  content: "✓";
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1E6E62; /* Matches your site's accent teal color (#1E6E62) */
+  line-height: 1;
+}
+
+/* Container for the background map in the Hero section */
+.hero-map-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%; /* Extends over the right side */
+  z-index: 2;
+  pointer-events: none;
+  
+  background-image: url('../images/mombasadarkmap.jpg');
+  background-size: cover;
+  background-position: center right;
+  opacity: 0.8; /* High opacity so the dark image details pop */
+
+  /* Direct CSS mask to fade out the left edge smoothly */
+  mask-image: linear-gradient(to right, transparent 0%, #000 60%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 60%);
+}
+
+/* Remove or clear out the ::after pseudo-element so it doesn't block the image */
+.hero-map-overlay::after {
+  display: none;
 }
