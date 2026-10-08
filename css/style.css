@@ -1,11 +1,11 @@
+html {
+  scroll-behavior: smooth;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 * {
@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: #12232E;
   line-height: 1.6;
 }
@@ -28,35 +28,11 @@ section[id] {
   scroll-margin-top: 90px;
 }
 
-.site-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: rgba(18, 35, 46, 0.92);
-  backdrop-filter: blur(8px);
-}
-
-.nav-inner {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 1.25rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .nav-mark {
   font-size: 1.4rem;
   font-weight: 600;
   color: #E7ECE9;
   text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
 }
 
 .nav-links a {
@@ -71,6 +47,7 @@ section[id] {
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   background: #12232E;
   display: flex;
   flex-direction: column;
@@ -91,7 +68,7 @@ section[id] {
 .hero-name {
   position: relative;
   z-index: 1;
-  font-size: clamp(3rem, 10vw, 6rem);
+  font-size: clamp(2.5rem, 10vw, 6rem);
   line-height: 0.95;
   color: #E7ECE9;
   margin-bottom: 0.75rem;
@@ -154,15 +131,6 @@ section[id] {
   margin-bottom: 1.25rem;
 }
 
-.fact-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  padding-top: 2rem;
-}
-
-/* TODO: revisit mobile layout — photo size, nav spacing */
 @media (max-width: 800px) {
   .about {
     flex-direction: column;
@@ -172,20 +140,8 @@ section[id] {
     width: 200px;
   }
 
-  .nav-links {
-    gap: 1rem;
-  }
-
   .nav-links a {
     font-size: 0.7rem;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -358,12 +314,6 @@ section[id] {
   border-left: 2px solid transparent;
   transition: all 0.2s ease;
 }
-
-.skill-list li:first-child {
-  border-top: 1px solid #D9DED8;
-}
-
-
 
 .projects {
   max-width: 1080px;
@@ -632,7 +582,7 @@ section[id] {
 .pin-graphic {
   width: 190px;
   height: 190px;
-  margin: 0 auto 1rem;
+  margin: 0;
   display: block;
 }
 
@@ -654,7 +604,7 @@ section[id] {
 
 .map-frame {
   display: inline-block;
-  padding: 1.5rem;
+  position: relative;
   padding: 1.5rem;
   border: 1px solid #D9DED8;
   background-image:
@@ -662,14 +612,6 @@ section[id] {
     linear-gradient(90deg, #D9DED8 1px, transparent 1px);
   background-size: 20px 20px;
   background-position: center;
-}
-
-.pin-graphic {
-  margin: 0;
-}
-
-.map-frame {
-  position: relative;
 }
 
 .compass-rose {
@@ -784,7 +726,6 @@ section[id] {
   right: 0;
   bottom: 0;
   width: 50%; /* Extends over the right side */
-  z-index: 2;
   pointer-events: none;
   
   background-image: url('../images/mombasadarkmap.jpg');
@@ -800,4 +741,80 @@ section[id] {
 /* Remove or clear out the ::after pseudo-element so it doesn't block the image */
 .hero-map-overlay::after {
   display: none;
+}
+
+.hero-map-overlay { z-index: 0; }
+
+@media (max-width: 800px) {
+  .site-nav .nav-inner { padding: 1rem 1.25rem; }
+  .site-nav .nav-links { gap: 1rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .hero-map-overlay { width: 100%; opacity: 0.3; }
+}
+
+@media (max-width: 600px) {
+  .site-nav .nav-inner { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+  .site-nav .nav-links { flex-wrap: wrap; justify-content: center; gap: 0.25rem 0.9rem; }
+  .nav-links a { padding: 0; }
+  .nav-mark { font-size: 1.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue-line::after { animation: none; }
+}
+
+@media (max-width: 380px) {
+  .site-nav .nav-links { gap: 0.5rem; }
+  .nav-links a { letter-spacing: 0.02em; padding: 0; }
+}
+
+@media (max-width: 600px) {
+  .fact-strip .fact { white-space: normal; max-width: 100%; }
+}
+
+.projects-group + .projects-group { margin-top: 4rem; }
+
+.projects-group-title {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1E6E62;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #D9DED8;
+}
+
+.services {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  border-top: 1px solid #D9DED8;
+}
+
+.services-heading {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.25;
+  max-width: 30rem;
+  margin-bottom: 3rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.service-title {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.service p {
+  font-size: 0.88rem;
+  color: #5B6B70;
+}
+
+@media (max-width: 800px) {
+  .services-grid { grid-template-columns: 1fr; }
 }
