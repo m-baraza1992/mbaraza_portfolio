@@ -71,7 +71,7 @@
   <section class="about" id="about">
 
     <div class="about-photo">
-      <img src="images/profile.jpg" alt="Portrait of Martin">
+      <img src="images/profile.jpg" alt="Portrait of Martin Elisha Baraza" loading="lazy">
     </div>
 
     <div class="about-content">
@@ -88,14 +88,14 @@
       <p class="about-text">
         My work spans the full GIS workflow, from field data collection and spatial analysis to building
         dashboards and systems that turn raw data into something decision-makers can actually use. I work
-        primarily in ArcGIS Enterprise and Python, alongside tools like QGIS, and KoboToolbox, depending on 
+        primarily in ArcGIS Enterprise and Python, alongside tools like QGIS and KoboToolbox, depending on 
         what a project calls for.
       </p>
 
       <div class="fact-strip">
         <div class="fact">
           <span class="fact-num">10+</span>
-          <span class="fact-label">Years Spatial Systems</span>
+          <span class="fact-label">Years in Spatial Systems</span>
         </div>
         <div class="fact">
           <span class="fact-num">Field-to-Cloud</span>
@@ -169,7 +169,7 @@
 
         <a href="projects/nrw-analysis.html" class="project-card">
           <div class="project-thumb">
-            <img src="images/projects/nrw-analysis.jpg" alt="Non-revenue water dashboard screenshot">
+            <img src="images/nrw-analysis.jpg" alt="Non-Revenue Water Analysis project card" loading="lazy">
           </div>
           <p class="project-tag">Dashboard &amp; Analysis</p>
           <h4 class="project-title">Non-Revenue Water Analysis</h4>
@@ -178,7 +178,7 @@
 
         <a href="projects/leaks-report.html" class="project-card">
           <div class="project-thumb">
-            <img src="images/projects/leaks-report.jpg" alt="Leaks and bursts incident report screenshot">
+            <img src="images/leaks-report.jpg" alt="Leaks and Bursts Incident Report project card" loading="lazy">
           </div>
           <p class="project-tag">Field Report</p>
           <h4 class="project-title">Leaks &amp; Bursts Incident Report</h4>
@@ -194,7 +194,7 @@
 
         <a href="projects/rainfall-mapping.html" class="project-card">
           <div class="project-thumb">
-            <img src="images/projects/rainfall-mapping.jpg" alt="Rainfall map produced from satellite data">
+            <img src="images/rainfall-mapping.jpg" alt="Rainfall map produced from satellite data" loading="lazy">
           </div>
           <p class="project-tag">Research Support</p>
           <h4 class="project-title">Satellite Rainfall Mapping for Academic Research</h4>
@@ -203,7 +203,7 @@
 
         <a href="projects/drainage-survey.html" class="project-card">
           <div class="project-thumb">
-            <img src="images/projects/drainage-survey.jpg" alt="Road drainage structure survey screenshot">
+            <img src="images/drainage-survey.jpg" alt="Road drainage structure survey project card" loading="lazy">
           </div>
           <p class="project-tag">Field Survey</p>
           <h4 class="project-title">Road Drainage Structure Survey</h4>
@@ -220,31 +220,45 @@
 
     <div class="services-grid">
       <div class="service">
+        <span class="service-num">01</span>
         <h3 class="service-title">Field Survey Design</h3>
         <p>KoboToolbox and ArcGIS Survey123 forms built around the questions your project needs answered, with GNSS capture and validation rules.</p>
       </div>
       <div class="service">
+        <span class="service-num">02</span>
         <h3 class="service-title">Spatial Data Analysis</h3>
         <p>Data processing, zonal statistics, and mapping for researchers, NGOs, and organizations that need defensible results.</p>
       </div>
       <div class="service">
+        <span class="service-num">03</span>
         <h3 class="service-title">Maps and Dashboards</h3>
         <p>Clear map products and ArcGIS dashboards that turn survey and operational data into decisions.</p>
       </div>
     </div>
 
-    <a href="mailto:martin.baraza1992@gmail.com?subject=GIS%20project%20enquiry" class="contact-link">Discuss a project →</a>
+    <a href="mailto:martin.baraza1992@gmail.com?subject=GIS%20project%20enquiry" class="btn btn-primary">Discuss a project</a>
   </section>
 
   <section class="contact" id="contact">
+    <div class="contour-field" aria-hidden="true">
+      <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+        <path class="contour" d="M -50,120 C 150,60 300,180 500,110 S 850,140 900,90" />
+        <path class="contour" d="M -50,200 C 150,150 320,260 520,190 S 850,220 900,170" />
+        <path class="contour" d="M -50,280 C 180,240 330,340 540,270 S 850,300 900,250" />
+        <path class="contour" d="M -50,360 C 200,330 340,420 560,350 S 850,380 900,330" />
+      </svg>
+    </div>
+
     <p class="section-eyebrow">Contact</p>
-    <h2 class="contact-heading">Let’s talk spatial systems, data pipelines, or why your coordinates aren't lining up.</h2>
+    <h2 class="contact-heading">Let's talk spatial systems, data pipelines, or why your coordinates aren't lining up.</h2>
     <p class="contact-line">Open to GIS engineering roles, freelance commissions, spatial data pipeline optimization, or technical conversations over coffee.</p>
 
     <div class="contact-links">
-      <a href="mailto:martin.baraza1992@gmail.com" class="contact-link">Email →</a>
-      <a href="tel:+254717890934" class="contact-link">Phone →</a>
+      <a href="mailto:martin.baraza1992@gmail.com" class="btn btn-primary">Email me</a>
+      <a href="tel:+254717890934" class="btn btn-ghost">Call</a>
     </div>
+
+    <p class="contact-address">martin.baraza1992@gmail.com · Mombasa, Kenya</p>
   </section>
 
 </main>
@@ -255,8 +269,8 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const navHeader = document.querySelector(".site-nav"); // Replace with your element selector
-    const aboutSection = document.querySelector("#about");   // Ensure your ABOUT section has id="about"
+    const navHeader = document.querySelector(".site-nav");
+    const aboutSection = document.querySelector("#about");
 
     const observer = new IntersectionObserver(
       (entries) => {

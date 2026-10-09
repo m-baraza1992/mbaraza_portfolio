@@ -3,19 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Non-Revenue Water Analysis — Martin Baraza</title>
+  <title>Non-Revenue Water Analysis | Martin Elisha Baraza</title>
+
+  <meta name="description" content="A combined view of physical and commercial water losses across MOWASSCO's schemes, built with Python, ArcGIS Enterprise and ArcGIS Dashboards.">
+
+  <meta property="og:title" content="Non-Revenue Water Analysis | Martin Elisha Baraza">
+  <meta property="og:description" content="Physical and commercial water losses in one spatial view, showing where repair and billing audit effort pays off first.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://m-baraza1992.github.io/mbaraza_portfolio/projects/nrw-analysis.html">
+  <meta property="og:image" content="https://m-baraza1992.github.io/mbaraza_portfolio/images/nrw-analysis.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-  <header class="site-nav">
+  <header class="site-nav visible">
     <div class="nav-inner">
-      <a href="../index.html" class="nav-mark">Martin</a>
+      <a href="../index.html" class="nav-mark">Martin Elisha Baraza</a>
       <nav class="nav-links">
         <a href="../index.html#about">About</a>
-        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#skills">Stack</a>
         <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#services">Services</a>
         <a href="../index.html#contact">Contact</a>
       </nav>
     </div>
@@ -28,31 +39,93 @@
     <p class="project-tag">Dashboard &amp; Analysis</p>
     <h1 class="project-detail-title">Non-Revenue Water Analysis</h1>
 
+    <p class="project-detail-lead">A combined view of physical and commercial water losses across MOWASSCO's schemes, built to show where repair and billing audit effort pays off first.</p>
+
+    <dl class="project-meta">
+      <div>
+        <dt>Organization</dt>
+        <dd>Mombasa Water Supply &amp; Sanitation Co. Ltd</dd>
+      </div>
+      <div>
+        <dt>Role</dt>
+        <dd>GIS Officer</dd>
+      </div>
+      <div>
+        <dt>Latest cycle</dt>
+        <dd>June 2026 billing</dd>
+      </div>
+    </dl>
+
     <div class="project-detail-thumb">
-      <img src="../images/projects/nrw-analysis.jpg" alt="Non-revenue water dashboard screenshot">
+      <img src="../images/nrw-analysis.jpg" alt="Non-Revenue Water Analysis project card">
     </div>
 
     <div class="project-detail-body">
-        <p>Non-revenue water — treated water that's produced but never billed, whether lost to leaks or to metering and billing gaps — is one of the biggest efficiency challenges a water utility faces. At MOWASSCO, tracking it meant pulling together two things that had never been correlated before: what the network was physically losing, and what the billing system was failing to capture.</p>
 
-        <h3>The problem</h3>
-        <p>Meter readings and billing data lived in the utility's ERP system, while leak and burst records lived separately in the GIS. Without a shared view, it was hard to tell whether a scheme's water loss was mostly physical (leaking pipes) or commercial (unbilled or under-billed connections) — a distinction that changes what kind of intervention actually helps.</p>
+      <h2>The problem</h2>
+      <p>Non-revenue water is treated water that is produced but never billed, whether it is lost to leaks or to metering and billing gaps. It is one of the largest efficiency challenges a water utility faces.</p>
+      <p>At MOWASSCO, meter readings and billing data lived in the ERP system, while leak and burst records lived separately in the GIS. Without a shared view, it was hard to tell whether a scheme's losses were mostly physical (leaking pipes) or commercial (unbilled or under billed connections). The two call for different interventions.</p>
 
-        <h3>The approach</h3>
-        <p>I built a Python workflow to pull meter readings directly from the SPA ERP system via its REST API on each billing cycle, rather than relying on manual exports. That data gets cleaned, matched to customer accounts, and published as a hosted feature layer on ArcGIS Enterprise — most recently the June 2026 billing cycle.</p>
-        <p>From there, I built a dashboard in ArcGIS Dashboards that puts commercial NRW (billing-side losses) and physical NRW (leaks and bursts) side by side across MOWASSCO's schemes, so patterns that would be invisible in either dataset alone become visible together.</p>
+      <h2>The approach</h2>
+      <p>The workflow runs in five steps, repeated each billing cycle:</p>
+      <ol class="project-steps">
+        <li>Pull meter readings from the SPA ERP system through its REST API, replacing manual exports.</li>
+        <li>Clean the data and match each reading to its customer account.</li>
+        <li>Publish the result as a hosted feature layer on ArcGIS Enterprise.</li>
+        <li>Link pipeline infrastructure to leak incidents with GeoPandas nearest neighbor joins.</li>
+        <li>Present commercial and physical NRW side by side in an ArcGIS Dashboard, scheme by scheme.</li>
+      </ol>
 
-        <h3>Tools</h3>
-        <p>Python (data extraction &amp; cleaning) · REST API integration · ArcGIS Enterprise (hosted feature layers) · ArcGIS Dashboards</p>
+      <h2>What the analysis found</h2>
+      <p>Across schemes, leak density and No Supply rate are strongly correlated. Likoni is the clearest outlier, with high commercial losses overlapping high physical leak activity. At pipe level, segment KNP03 emerged as the priority for repair.</p>
 
-        <h3>Outcome</h3>
-        <p>The correlated view identified Likoni as the priority scheme — the one showing the clearest overlap between high commercial losses and high physical leak activity — giving management a data-backed starting point for where to focus repair and billing-audit resources first.</p>
+      <div class="fact-strip">
+        <div class="fact">
+          <span class="fact-num">0.83</span>
+          <span class="fact-label">Correlation, leak density and No Supply rate</span>
+        </div>
+        <div class="fact">
+          <span class="fact-num">Likoni</span>
+          <span class="fact-label">Priority scheme</span>
+        </div>
+        <div class="fact">
+          <span class="fact-num">KNP03</span>
+          <span class="fact-label">Priority pipe segment</span>
+        </div>
+      </div>
+
+      <p>The result gives management a data backed starting point for where to focus repair and billing audit resources first.</p>
+
+      <h2>Deliverables</h2>
+      <ul class="project-list">
+        <li>A hosted feature layer of meter readings on ArcGIS Enterprise.</li>
+        <li>An ArcGIS Dashboard comparing commercial and physical NRW by scheme.</li>
+        <li>A GeoPackage of five layers linking pipelines to leak incidents.</li>
+      </ul>
+
+      <h2>Tools</h2>
+      <p>Python, GeoPandas, REST API integration, ArcGIS Enterprise, ArcGIS Dashboards.</p>
+
+      <!--
+      Add the dashboard and heatmap screenshots here once they are available:
+
+      <h2>Visuals</h2>
+      <div class="project-detail-thumb">
+        <img src="../images/nrw-dashboard.jpg" alt="ArcGIS Dashboard comparing commercial and physical NRW by scheme" loading="lazy">
+      </div>
+      -->
+
+    </div>
+
+    <div class="project-detail-actions">
+      <a href="../index.html#projects" class="back-link">← Back to projects</a>
+      <a href="mailto:martin.baraza1992@gmail.com?subject=GIS%20project%20enquiry" class="btn btn-primary">Discuss a project</a>
     </div>
 
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Martin Baraza. Built with GitHub Pages.</p>
+    <p>&copy; 2026 Martin Elisha Baraza. Built with GitHub Pages.</p>
   </footer>
 
 </body>
